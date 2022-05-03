@@ -11,11 +11,17 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      gray500: "hsl(206,10%,76%)",
-      blue500: "hsl(206,100%,50%)",
-      purple500: "hsl(252,78%,60%)",
-      green500: "hsl(148,60%,60%)",
-      red500: "hsl(352,100%,62%)",
+      // black
+      black1: "#000",
+      black2: "#242424",
+      black3: "#4e4e4e",
+      black4: "#949494",
+      // white
+      white: "#fff",
+      // main colors
+      primary: "#2771ff",
+      red: "#FF0000",
+      teal: "#00FFF0",
     },
     fontSizes: {
       small: "14px",
@@ -34,7 +40,10 @@ export const {
     borderWidths: {},
     borderStyles: {},
     radii: {},
-    shadows: {},
+    shadows: {
+      pc: "0px 2px 8px rgba(0, 163, 255, 0.16)",
+      mobile: "0px 2px 8px rgba(0, 163, 255, 0.08)",
+    },
     zIndices: {},
     transitions: {},
   },
