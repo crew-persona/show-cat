@@ -46,7 +46,8 @@
   },
   "devDependencies": {
     "@stitches/react": "^1.2.7",
+    "@types/dotenv": "^8.2.0",
     "craco-alias": "^3.0.1",
-    "@types/dotenv": "^8.2.0"
+    "stitches-reset": "^1.0.0"
   }
 }

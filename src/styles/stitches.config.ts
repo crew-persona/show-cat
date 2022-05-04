@@ -9,6 +9,10 @@ export const {
   createTheme,
   getCssText,
 } = createStitches({
+  media: {
+    mobile: "(max-width: 999px)",
+    pc: "(min-width: 1000px)",
+  },
   theme: {
     colors: {
       // black
