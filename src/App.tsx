@@ -1,3 +1,4 @@
+import Router from "Router";
 import globalStyles from "./styles/globalStyles";
 
 function App() {
@@ -5,9 +6,9 @@ function App() {
   globalStyles();
 
   return (
-    <div className="App">
-      <h1>fpasdf</h1>
-    </div>
+    <>
+      <Router />
+    </>
   );
 }
 
