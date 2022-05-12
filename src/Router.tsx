@@ -5,6 +5,7 @@ import Oauth from "routes/auth/Oauth";
 import SignIn from "routes/auth/SignIn";
 import SignUp from "routes/auth/SignUp";
 import Home from "routes/display/Home";
+import Kakao from "routes/auth/Kakao";
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path="oauth" element={<Oauth />}>
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-in" element={<SignIn />} />
+          <Route path="callback/kakao" element={<Kakao />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
