@@ -9,6 +9,10 @@ export const {
   createTheme,
   getCssText,
 } = createStitches({
+  media: {
+    mobile: "(max-width: 999px)",
+    pc: "(min-width: 1000px)",
+  },
   theme: {
     colors: {
       // black
@@ -16,10 +20,12 @@ export const {
       black2: "#242424",
       black3: "#4e4e4e",
       black4: "#949494",
+      black5: "#f4f4f4",
       // white
       white: "#fff",
       // main colors
-      primary: "#2771ff",
+      primary: "#4987FF",
+      blue: "#2771FF",
       red: "#FF0000",
       teal: "#00FFF0",
     },
