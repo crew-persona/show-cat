@@ -1,8 +1,14 @@
 import { Navigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { isLoggedInAtom } from "utils/atoms";
 
 export default function Kakao() {
-  let code = new URL(window.location.href).searchParams.get("code");
-  console.log(code);
+  const kakaoToken = new URL(window.location.href).searchParams.get("code");
+  const setKakaoToken = useSetRecoilState(isLoggedInAtom);
+  if (kakaoToken) {
+    setKakaoToken(kakaoToken);
+    localStorage.setItem("token", kakaoToken);
+  }
 
-  return <>{code && <Navigate to="/" />}</>;
+  return <>{kakaoToken && <Navigate to="/" />}</>;
 }

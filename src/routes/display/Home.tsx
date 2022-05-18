@@ -1,3 +1,10 @@
 export default function Home() {
-  return <div>Home</div>;
+  const userToken = localStorage.getItem("token");
+
+  return (
+    <div>
+      Home
+      <div>kakaoToken: {userToken}</div>
+    </div>
+  );
 }
