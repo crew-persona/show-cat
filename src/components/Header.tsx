@@ -15,7 +15,6 @@ const HeaderWrapper = styled("header", {
   top: 0,
   left: 0,
   right: 0,
-  marginBottom: "32px",
 });
 
 const HeaderContents = styled("div", {
