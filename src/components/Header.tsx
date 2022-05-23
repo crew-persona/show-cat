@@ -1,6 +1,7 @@
 import { styled } from "@styles/stitches.config";
+import { HTMLAttributes } from "react";
 
-export const Header = styled("header", {
+const HeaderWrapper = styled("header", {
   "@mobile": {
     padding: "12px 0",
     boxShadow: "$mobile",
@@ -9,9 +10,15 @@ export const Header = styled("header", {
     padding: "20px 0",
     boxShadow: "$pc",
   },
+  backgroundColor: "$white",
+  position: "sticky",
+  top: 0,
+  left: 0,
+  right: 0,
+  marginBottom: "32px",
 });
 
-export const HeaderWrapper = styled("div", {
+const HeaderContents = styled("div", {
   maxWidth: "1000px",
   width: "90%",
   margin: "auto",
@@ -31,3 +38,13 @@ export const HeaderItemFull = styled("div", {
     marginRight: "8px",
   },
 });
+
+const Header = ({ children, ...props }: HTMLAttributes<HTMLElement>) => {
+  return (
+    <HeaderWrapper {...props}>
+      <HeaderContents>{children}</HeaderContents>
+    </HeaderWrapper>
+  );
+};
+
+export default Header;
