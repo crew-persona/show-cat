@@ -5,7 +5,7 @@ import { reset } from "stitches-reset";
 const globalStyles = globalCss({
   ...reset,
 
-  "html, body": {
+  "html, body, #root": {
     width: "100%",
     height: "100%",
     "*": {
