@@ -1,3 +1,9 @@
 export default function Home() {
-  return <div>Home</div>;
+  const uid = localStorage.getItem("uid");
+  return (
+    <div>
+      Home
+      {uid && <span>UID: {uid}</span>}
+    </div>
+  );
 }
