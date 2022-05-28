@@ -1,10 +1,20 @@
 import { auth } from "config/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from 'recoil';
+import { authAtom } from "recoil/atoms/authAtom";
+import { useEffect } from "react";
 
 export default function SignIn() {
   const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
+  const uid = useRecoilValue(authAtom);
+
+  useEffect(() => {
+      if (uid) 
+      navigate("/");
+  }, []);
+
 
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
@@ -16,6 +26,7 @@ export default function SignIn() {
         console.log(user);
         const { uid } = user;
         localStorage.setItem("uid", uid);
+        console.log()
         navigate("/");
       })
       .catch((error) => {
@@ -42,3 +53,5 @@ export default function SignIn() {
     </div>
   );
 }
+
+

@@ -7,9 +7,12 @@ import Header, {
 import Button from "components/Button";
 import Container from "components/Container";
 import { ListContainer, ListImage, ListItem } from "components/CatList";
+import { getIpAddress } from "utill/getIpAddress";
 
 export default function Home() {
   const uid = localStorage.getItem("uid");
+  const ipAddress = getIpAddress();
+  console.log(ipAddress)
   return (
     <>
       <Header>
