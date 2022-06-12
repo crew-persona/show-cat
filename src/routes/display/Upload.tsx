@@ -84,7 +84,7 @@ export default function UploadFile() {
   const insertLikes = async(id:string) => {
     try {
       const imageCollection = await collection(db, 'Image', id, 'id'); 
-      console.log(imageCollection)//ログインユーザーのmemosコレクションへのレファレンス（ない場合は作成される） // doc.idをmemoドキュメントのidフィールドの値と同じにする 
+      console.log(imageCollection)
       const docRef = addDoc((imageCollection),{
         ip:getIpAddress(),
         like:true
