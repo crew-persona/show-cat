@@ -1,7 +1,11 @@
+import { useState } from "react";
 
-export const getIpAddress = async () => {
-    const ipData = await fetch('https://geolocation-db.com/json/');
-    const locationIp = await ipData.json();
-    console.log(locationIp.IPv4);
-    return locationIp;
-}
+export const useGetIpAddress = () => {
+    const [ipValue, setIpValue] = useState('');
+    fetch('https://geolocation-db.com/json/').then(
+        ipData=> ipData.json().then(
+            value => {
+                setIpValue(value.IPv4)}))
+            return ipValue;
+        }
+

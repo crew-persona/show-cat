@@ -7,12 +7,34 @@ import Header, {
 import Button from "components/Button";
 import Container from "components/Container";
 import { ListContainer, ListImage, ListItem } from "components/CatList";
-import { getIpAddress } from "utill/getIpAddress";
+import {useGetIpAddress}  from "utill/getIpAddress";
+import { useNavigate } from "react-router";
+import {  doc, updateDoc } from "firebase/firestore";
+import { db } from "config/firebase";
+import useGetDocs from "utill/getImages";
 
 export default function Home() {
+
+
   const uid = localStorage.getItem("uid");
-  const ipAddress = getIpAddress();
-  console.log(ipAddress)
+  const navigate = useNavigate();
+
+  const images = useGetDocs();
+  const ipAddress = useGetIpAddress();
+  
+  const onClickLike = async(data: any) => {
+    console.log(data.likeIps)
+    
+    const ips:string[] = !data.likeIps.includes(ipAddress) ?
+    data.likeIps.push(ipAddress) : data.likeIps;
+    const cnt = ips.length;
+    console.log(cnt)
+
+    await updateDoc(doc(db, "Images", data.id), {
+      likeCnt: cnt,
+      likeIps:ips
+    });
+  }
   return (
     <>
       <Header>
@@ -21,29 +43,25 @@ export default function Home() {
           <HeaderSubtitle>매 주 진행되는 고양이 자랑 대회</HeaderSubtitle>
         </HeaderItemFull>
         <HeaderItem>
-          <Button color="primary">로그인</Button>
+          {(uid === undefined || uid ===null) ? <Button onClick={()=>{navigate('/oauth/sign-in')}} color="primary">로그인</Button> :
+           <Button onClick={()=>{navigate('/oauth/sign-out')}} color="primary">로그아웃</Button> }
         </HeaderItem>
       </Header>
       <Container>
         <ListContainer>
-          <ListItem count={{ "@pc": 4, "@mobile": 2 }}>
-            <ListImage
-              src={`https://images.unsplash.com/photo-1520315342629-6ea920342047?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2834`}
-              alt="cat"
-            />
-          </ListItem>
-          <ListItem count={{ "@pc": 4, "@mobile": 2 }}>
-            <ListImage
-              src={`https://images.unsplash.com/photo-1520315342629-6ea920342047?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2834`}
-              alt="cat"
-            />
-          </ListItem>
-          <ListItem count={{ "@pc": 4, "@mobile": 2 }}>
-            <ListImage
-              src={`https://images.unsplash.com/photo-1520315342629-6ea920342047?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2834`}
-              alt="cat"
-            />
-          </ListItem>
+          {
+            images.documents.map((img) => 
+              <ListItem count={{ "@pc": 4, "@mobile": 2 }}>
+                 <button onClick={()=>{onClickLike(img)}}>
+              <ListImage
+                key={img.id}
+                src={img.link}
+                alt="cat"
+              />
+              </button>
+            </ListItem>
+            )
+          }
         </ListContainer>
       </Container>
     </>

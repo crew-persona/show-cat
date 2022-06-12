@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { collection, DocumentData, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "config/firebase";
 
 const useGetDocs = () => {
     const [documents, setDocuments] = useState<{ [x: string]: any; }[]>([]);
 
-    //Firebase Collection Reference
-    const postCollectionRef = collection(db, 'Image');
+    const postCollectionRef = collection(db, 'Images');
 
     useEffect(() => {
         const getDocuments = async () => {
