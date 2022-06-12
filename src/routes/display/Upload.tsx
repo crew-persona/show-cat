@@ -28,7 +28,11 @@ const insertDB = async(ImageUrl:string) => {
 }
 
 export default function UploadFile() {
-
+  const uid = localStorage.getItem("uid");
   const user = getAuth().currentUser;
+  if (!uid) {
+    console.log("해당 유저를 찾을 수 없습니다. ")
+    return <></>
+  }
 
   return <input type="file" id="file" onChange={onChange} accept="image/*"/>}

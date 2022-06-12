@@ -19,6 +19,7 @@ export default function SignIn() {
         navigate("/");
       })
       .catch((error) => {
+        console.log(error)
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
