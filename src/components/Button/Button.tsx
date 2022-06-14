@@ -9,7 +9,6 @@ const Button = styled("button", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-
   variants: {
     color: {
       primary: {

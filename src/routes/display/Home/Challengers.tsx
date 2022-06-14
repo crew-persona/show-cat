@@ -1,4 +1,3 @@
-import Container from "components/Container";
 import { ListContainer, ListImage, ListItem } from "components/CatList";
 
 const Challengers = () => {
