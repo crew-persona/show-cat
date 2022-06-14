@@ -10,6 +10,9 @@ export const ButtonGroupItem = styled("li", {
   listStyle: "none",
   padding: 0,
   display: "flex",
+  ":not(:first-child)": {
+    marginLeft: "8px",
+  },
 });
 
 export const ButtonGroupItemFull = styled("li", {
@@ -17,6 +20,9 @@ export const ButtonGroupItemFull = styled("li", {
   padding: 0,
   flex: 1,
   display: "flex",
+  ":not(:first-child)": {
+    marginLeft: "8px",
+  },
   variants: {
     align: {
       center: {

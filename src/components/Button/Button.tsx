@@ -9,9 +9,7 @@ const Button = styled("button", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  "&:not(:first-of-type)": {
-    marginLeft: "8px",
-  },
+
   variants: {
     color: {
       primary: {
