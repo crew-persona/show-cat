@@ -1,16 +1,20 @@
 import { styled } from "@styles/stitches.config";
 
 const Button = styled("button", {
-  padding: "12px 16px",
   fontWeight: 500,
   border: "none",
   borderRadius: "6px",
   cursor: "pointer",
+  padding: "12px 16px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   variants: {
     color: {
       primary: {
         color: "$white",
         backgroundColor: "$primary",
+        fontWeight: 600,
       },
       transparent: {
         color: "$black1",
@@ -20,15 +24,27 @@ const Button = styled("button", {
         },
       },
     },
-    icon: {
+    iconOnly: {
       true: {
         padding: "12px",
+      },
+    },
+    iconAlign: {
+      left: {
+        svg: {
+          marginRight: "6px",
+        },
+      },
+      right: {
+        svg: {
+          marginLeft: "6px",
+        },
       },
     },
   },
   defaultVariants: {
     color: "transparent",
-    icon: false,
+    iconOnly: false,
   },
 });
 
