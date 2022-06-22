@@ -34,9 +34,11 @@ export default function SignIn() {
       });
   };
 
-  return uid ? (
-    <Navigate to="/" />
-  ) : (
+  if (uid) {
+    return <Navigate to="/" />;
+  }
+
+  return (
     <div>
       SignIn
       <img
