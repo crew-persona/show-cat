@@ -1,17 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { authAtom } from "recoil/atoms/authAtom";
 
 export default function SignOut() {
-  const { Kakao } = window as any;
-  const navigate = useNavigate();
-  if (!Kakao.Auth.getAccessToken()) {
-    console.log("Not logged in.");
-    navigate("/");
+  const uid = useRecoilValue(authAtom);
+  if (uid) {
+    localStorage.removeItem("uid");
   }
-
-  Kakao.Auth.logout(function () {
-    console.log(Kakao.Auth.getAccessToken());
-    navigate("/");
-  });
 
   return <div>SignOut</div>;
 }

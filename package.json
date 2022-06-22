@@ -14,12 +14,17 @@
     "@types/react-dom": "^18.0.1",
     "dotenv": "^16.0.0",
     "firebase": "^9.6.11",
+    "imgur": "^2.2.0",
+    "imgur-anonymous-uploader": "^1.1.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "recoil": "^0.7.3-alpha.2",
     "stitches-reset": "^1.0.0",
     "typescript": "^4.6.3",
+    "util": "^0.12.4",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
