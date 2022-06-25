@@ -16,11 +16,17 @@ import { ReactComponent as Write } from "@assets/icons/write.svg";
 import Container from "components/Container";
 import StyledLink from "components/StyledLink";
 import { Outlet, useLocation } from "react-router-dom";
+import { css } from "@styles/stitches.config";
 
 const Home = () => {
   const buttonGroupRef = useRef<HTMLUListElement>(null);
   const isButtonGroupOnScreen = useOnScreen(buttonGroupRef);
   const { pathname } = useLocation();
+  const writeIconStyles = css({
+    "@mobile": {
+      display: "none",
+    },
+  });
 
   return (
     <Container>
@@ -76,8 +82,16 @@ const Home = () => {
           </StyledLink>
         </ButtonGroupItemFull>
         <ButtonGroupItem>
-          <Button color="primary" iconAlign="left">
-            <Write fill="white" />
+          <Button
+            color="primary"
+            iconAlign="left"
+            css={{
+              "@mobile": {
+                padding: "10px 12px",
+              },
+            }}
+          >
+            <Write fill="white" className={writeIconStyles()} />
             참여하기
           </Button>
         </ButtonGroupItem>
