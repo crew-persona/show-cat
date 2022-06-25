@@ -7,13 +7,11 @@ const Text = styled("p", {
   "@pc": {
     fontSize: "$medium",
   },
-
   variants: {
     size: {
       default: {
         fontSize: "1rem",
       },
-      // paragraph
       sm: {
         fontSize: "0.812rem",
       },

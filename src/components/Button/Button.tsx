@@ -9,6 +9,7 @@ const Button = styled("button", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  fontSize: "14px",
   variants: {
     color: {
       primary: {

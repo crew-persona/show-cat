@@ -8,5 +8,7 @@ declare namespace NodeJS {
     REACT_APP_MESSAGINGSENDER_ID: string;
     REACT_APP_APP_ID: string;
     REACT_APP_MEASUR_ID: string;
+    IMGUR_CLIENT_ID: string;
+    IMGRU_CLIENT_SECRET: string;
   }
 }
