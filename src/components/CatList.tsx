@@ -3,12 +3,6 @@ import { styled } from "@styles/stitches.config";
 export const ListContainer = styled("ul", {
   display: "flex",
   flexWrap: "wrap",
-  li: {},
-});
-
-export const ListItem = styled("li", {
-  paddingTop: "100%",
-  padding: "4px",
   variants: {
     fullWidth: {
       true: {
@@ -21,6 +15,13 @@ export const ListItem = styled("li", {
         padding: 0,
       },
     },
+  },
+});
+
+export const ListItem = styled("li", {
+  paddingTop: "100%",
+  padding: "4px",
+  variants: {
     count: {
       "1": {
         width: "calc(100% / 1 - 8px)",
@@ -32,9 +33,6 @@ export const ListItem = styled("li", {
         width: "calc(100% / 4 - 8px)",
       },
     },
-  },
-  defaultVariants: {
-    fullWidth: false,
   },
 });
 

@@ -16,6 +16,7 @@ const HeaderWrapper = styled("header", {
   top: 0,
   left: 0,
   right: 0,
+  zIndex: 1,
 });
 
 const HeaderContents = styled("div", {
