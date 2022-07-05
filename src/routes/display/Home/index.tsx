@@ -73,7 +73,7 @@ const Home = () => {
                   width: "240px",
                 },
               }}
-              className={pathname === "/" ? "active" : ""}
+              active={pathname === "/"}
             >
               🐱 도전자
             </Button>
@@ -85,7 +85,7 @@ const Home = () => {
                   width: "240px",
                 },
               }}
-              className={pathname === "/best-cats" ? "active" : ""}
+              active={pathname === "/best-cats"}
             >
               🏆 명예의전당
             </Button>
