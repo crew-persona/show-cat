@@ -1,17 +1,25 @@
-import { RefObject, useState, useMemo, useEffect } from "react";
+import { RefObject, useState, useLayoutEffect } from "react";
 
-export default function useOnScreen(ref: RefObject<HTMLElement>) {
+export default function useOnScreen(
+  ref: RefObject<HTMLElement>,
+  observerOptions?: IntersectionObserverInit
+) {
   const [isIntersecting, setIntersecting] = useState<Boolean>(false);
 
-  const observer = useMemo(
-    () =>
-      new IntersectionObserver(([entry]) =>
-        setIntersecting(entry.isIntersecting)
-      ),
-    []
-  );
+  useLayoutEffect(() => {
+    const defaultObserverOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0,
+    };
 
-  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]: IntersectionObserverEntry[]) => {
+        return setIntersecting(entry.isIntersecting);
+      },
+      observerOptions ?? defaultObserverOptions
+    );
+
     if (ref.current) {
       observer.observe(ref.current);
     }
@@ -20,7 +28,7 @@ export default function useOnScreen(ref: RefObject<HTMLElement>) {
     return () => {
       observer.disconnect();
     };
-  }, [observer, ref]);
+  }, [ref, observerOptions]);
 
   return isIntersecting;
 }

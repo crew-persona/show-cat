@@ -19,8 +19,11 @@ import { Outlet, useLocation } from "react-router-dom";
 import { css } from "@styles/stitches.config";
 
 const Home = () => {
-  const buttonGroupRef = useRef<HTMLUListElement>(null);
-  const isButtonGroupOnScreen = useOnScreen(buttonGroupRef);
+  const navButtonGroupRef = useRef<HTMLUListElement>(null);
+  const isNavButtonGroupOnScreen = useOnScreen(navButtonGroupRef, {
+    rootMargin: "-60px 0px 0px 0px",
+    threshold: 0,
+  });
   const { pathname } = useLocation();
   const writeIconStyles = css({
     "@mobile": {
@@ -31,12 +34,19 @@ const Home = () => {
   return (
     <Container>
       <Header>
-        <HeaderItemFull css={{ display: "flex", alignItems: "center" }}>
+        <HeaderItemFull
+          css={{
+            alignItems: "center",
+            "@mobile": {
+              display: isNavButtonGroupOnScreen ? "flex" : "none",
+            },
+          }}
+        >
           <HeaderTitle>이 주의 집사</HeaderTitle>
           <HeaderSubtitle>매 주 진행되는 고양이 자랑 대회</HeaderSubtitle>
         </HeaderItemFull>
         <HeaderItem>
-          {isButtonGroupOnScreen ? (
+          {isNavButtonGroupOnScreen ? (
             <Button color="primary">로그인</Button>
           ) : (
             <ButtonGroup>
@@ -50,7 +60,7 @@ const Home = () => {
           )}
         </HeaderItem>
       </Header>
-      <ButtonGroup ref={buttonGroupRef}>
+      <ButtonGroup ref={navButtonGroupRef}>
         <ButtonGroupItemFull
           align={{
             "@pc": "center",

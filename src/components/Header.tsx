@@ -37,6 +37,7 @@ export const HeaderItem = styled("div", {
 
 export const HeaderItemFull = styled("div", {
   flex: "auto",
+  display: "flex",
   "&:not(:last-child)": {
     marginRight: "8px",
   },
