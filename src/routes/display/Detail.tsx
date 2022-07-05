@@ -19,7 +19,9 @@ const Detail = () => {
               }}
             >
               <Back width="16" height="16" style={{ marginRight: "6px" }} />
-              🐱 도전자
+              <Button as="div" className="active">
+                🐱 도전자
+              </Button>
             </Button>
           </StyledLink>
         </HeaderItemFull>
