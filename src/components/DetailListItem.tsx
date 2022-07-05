@@ -21,11 +21,15 @@ const DetailButtonContainer = styled("div", {
 interface DetailListItemProps {
   initialLiked: boolean;
   initialLikedCount: number;
+  src: string;
+  alt: string;
 }
 
 const DetailListItem = ({
   initialLiked,
   initialLikedCount,
+  src,
+  alt,
 }: DetailListItemProps) => {
   const [liked, setLiked] = useState(initialLiked);
   const [likedCount, setLikedCount] = useState(initialLikedCount);
@@ -55,10 +59,7 @@ const DetailListItem = ({
         position: "relative",
       }}
     >
-      <ListImage
-        src={`https://images.unsplash.com/photo-1520315342629-6ea920342047?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2834`}
-        alt="cat"
-      />
+      <ListImage src={src} alt={alt} />
       <DetailButtonContainer>
         <ButtonGroup
           css={{
