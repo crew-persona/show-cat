@@ -44,10 +44,19 @@ const Button = styled("button", {
         },
       },
     },
+    underline: {
+      true: {
+        textDecoration: "underline",
+      },
+      false: {
+        textDecoration: "none",
+      },
+    },
   },
   defaultVariants: {
     color: "transparent",
     iconOnly: false,
+    underline: false,
   },
 });
 

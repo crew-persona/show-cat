@@ -14,8 +14,7 @@ import {
 } from "components/Button";
 import { ReactComponent as Write } from "@assets/icons/write.svg";
 import Container from "components/Container";
-import StyledLink from "components/StyledLink";
-import { Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { css } from "@styles/stitches.config";
 
 const Home = () => {
@@ -66,30 +65,30 @@ const Home = () => {
             "@pc": "center",
           }}
         >
-          <StyledLink to="/" underline={false}>
-            <Button
-              css={{
-                "@pc": {
-                  width: "240px",
-                },
-              }}
-              active={pathname === "/"}
-            >
-              🐱 도전자
-            </Button>
-          </StyledLink>
-          <StyledLink to="best-cats" underline={false}>
-            <Button
-              css={{
-                "@pc": {
-                  width: "240px",
-                },
-              }}
-              active={pathname === "/best-cats"}
-            >
-              🏆 명예의전당
-            </Button>
-          </StyledLink>
+          <Button
+            css={{
+              "@pc": {
+                width: "240px",
+              },
+            }}
+            as={Link}
+            to="/"
+            active={pathname === "/"}
+          >
+            🐱 도전자
+          </Button>
+          <Button
+            css={{
+              "@pc": {
+                width: "240px",
+              },
+            }}
+            as={Link}
+            to="/best-cats"
+            active={pathname === "/best-cats"}
+          >
+            🏆 명예의전당
+          </Button>
         </ButtonGroupItemFull>
         <ButtonGroupItem>
           <Button
