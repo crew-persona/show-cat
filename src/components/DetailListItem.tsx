@@ -3,7 +3,7 @@ import { Button, ButtonGroup, ButtonGroupItem } from "components/Button";
 import { ListImage, ListItem } from "components/CatList";
 import { ReactComponent as Jelly } from "@assets/icons/jelly.svg";
 import Text from "components/Text";
-import { styled, theme } from "@styles/stitches.config";
+import { css, styled, theme } from "@styles/stitches.config";
 
 const DetailButtonContainer = styled("div", {
   position: "absolute",
@@ -17,6 +17,7 @@ const DetailButtonContainer = styled("div", {
   background:
     "linear-gradient(360deg, rgba(1, 1, 1, 0.3) 0%, rgba(58, 58, 58, 0) 100%)",
   "@mobile": {
+    height: "40%",
     bottom: "0",
     right: "0",
     left: "0",
@@ -38,6 +39,12 @@ const DetailListItem = ({
 }: DetailListItemProps) => {
   const [liked, setLiked] = useState(initialLiked);
   const [likedCount, setLikedCount] = useState(initialLikedCount);
+  const jellyIconStyles = css({
+    "@mobile": {
+      width: "24px",
+      height: "24px",
+    },
+  });
 
   const onLikeButtonClick = () => {
     if (liked) {
@@ -102,7 +109,10 @@ const DetailListItem = ({
               iconOnly={true}
               onClick={onLikeButtonClick}
             >
-              <Jelly fill={liked ? "#fff" : "#6D6D6D"} />
+              <Jelly
+                fill={liked ? "#fff" : "#6D6D6D"}
+                className={jellyIconStyles()}
+              />
             </Button>
           </ButtonGroupItem>
         </ButtonGroup>
