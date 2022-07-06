@@ -16,6 +16,7 @@ const HeaderWrapper = styled("header", {
   top: 0,
   left: 0,
   right: 0,
+  zIndex: 1,
 });
 
 const HeaderContents = styled("div", {
@@ -32,12 +33,16 @@ export const HeaderItem = styled("div", {
   "&:not(:last-child)": {
     marginRight: "8px",
   },
-});
-
-export const HeaderItemFull = styled("div", {
-  flex: "auto",
-  "&:not(:last-child)": {
-    marginRight: "8px",
+  variants: {
+    full: {
+      true: {
+        flex: "auto",
+        display: "flex",
+        "&:not(:last-child)": {
+          marginRight: "8px",
+        },
+      },
+    },
   },
 });
 

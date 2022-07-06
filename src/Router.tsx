@@ -9,6 +9,7 @@ import Challengers from "routes/display/Home/Challengers";
 import BestCats from "routes/display/Home/BestCats";
 import UploadFile from "routes/display/Upload";
 import SignOut from "routes/auth/SignOut";
+import Detail from "routes/display/Detail";
 
 const Router = () => {
   return (
@@ -27,6 +28,8 @@ const Router = () => {
         </Route>
         {/* Upload */}
         <Route path="upload" element={<UploadFile />} />
+        {/* Detail */}
+        <Route path="detail/:id" element={<Detail />} />
         {/* Not Found */}
         <Route path="*" element={<NotFound />} />
       </Routes>

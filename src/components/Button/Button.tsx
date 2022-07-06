@@ -20,9 +20,11 @@ const Button = styled("button", {
       transparent: {
         color: "$black1",
         backgroundColor: "transparent",
-        "&.active": {
-          backgroundColor: "$black5",
-        },
+      },
+    },
+    active: {
+      true: {
+        backgroundColor: "$black5",
       },
     },
     iconOnly: {
@@ -42,10 +44,19 @@ const Button = styled("button", {
         },
       },
     },
+    underline: {
+      true: {
+        textDecoration: "underline",
+      },
+      false: {
+        textDecoration: "none",
+      },
+    },
   },
   defaultVariants: {
     color: "transparent",
     iconOnly: false,
+    underline: false,
   },
 });
 

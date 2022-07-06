@@ -3,7 +3,19 @@ import { styled } from "@styles/stitches.config";
 export const ListContainer = styled("ul", {
   display: "flex",
   flexWrap: "wrap",
-  li: {},
+  variants: {
+    fullWidth: {
+      true: {
+        width: "100vw",
+        position: "relative",
+        left: "50%",
+        right: "50%",
+        marginLeft: "-50vw",
+        marginRight: "-50vw",
+        padding: 0,
+      },
+    },
+  },
 });
 
 export const ListItem = styled("li", {

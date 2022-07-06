@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import Header, {
   HeaderItem,
-  HeaderItemFull,
   HeaderSubtitle,
   HeaderTitle,
 } from "components/Header";
@@ -14,15 +13,27 @@ import {
 } from "components/Button";
 import { ReactComponent as Write } from "@assets/icons/write.svg";
 import Container from "components/Container";
-import StyledLink from "components/StyledLink";
-import { Outlet, useLocation } from "react-router-dom";
-import { css } from "@styles/stitches.config";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { css, theme } from "@styles/stitches.config";
 
 const Home = () => {
-  const buttonGroupRef = useRef<HTMLUListElement>(null);
-  const isButtonGroupOnScreen = useOnScreen(buttonGroupRef);
+  const navButtonGroupRef = useRef<HTMLUListElement>(null);
+  const isNavButtonGroupOnScreen = useOnScreen(navButtonGroupRef, {
+    rootMargin: "-60px 0px 0px 0px",
+    threshold: 0,
+  });
   const { pathname } = useLocation();
-  const writeIconStyles = css({
+  const writeHeaderIconStyles = css({
+    "@pc": {
+      width: 21,
+      height: 21,
+    },
+    "@mobile": {
+      width: 16,
+      height: 16,
+    },
+  });
+  const writeButtonIconStyles = css({
     "@mobile": {
       display: "none",
     },
@@ -31,12 +42,30 @@ const Home = () => {
   return (
     <Container>
       <Header>
-        <HeaderItemFull css={{ display: "flex", alignItems: "center" }}>
+        <HeaderItem
+          full={true}
+          css={{
+            alignItems: "center",
+            "@mobile": {
+              display: isNavButtonGroupOnScreen ? "flex" : "none",
+            },
+          }}
+        >
           <HeaderTitle>이 주의 집사</HeaderTitle>
           <HeaderSubtitle>매 주 진행되는 고양이 자랑 대회</HeaderSubtitle>
-        </HeaderItemFull>
-        <HeaderItem>
-          {isButtonGroupOnScreen ? (
+        </HeaderItem>
+        <HeaderItem
+          css={
+            isNavButtonGroupOnScreen
+              ? {}
+              : {
+                  "@mobile": {
+                    flex: "1 1 auto",
+                  },
+                }
+          }
+        >
+          {isNavButtonGroupOnScreen ? (
             <Button color="primary">로그인</Button>
           ) : (
             <ButtonGroup>
@@ -46,40 +75,59 @@ const Home = () => {
               <ButtonGroupItem>
                 <Button>🏆 명예의전당</Button>
               </ButtonGroupItem>
+              <ButtonGroupItem
+                css={
+                  isNavButtonGroupOnScreen
+                    ? {}
+                    : {
+                        "@mobile": {
+                          flex: "1 1 auto",
+                          justifyContent: "flex-end",
+                        },
+                      }
+                }
+              >
+                <Button as={Link} to="/" iconOnly={true}>
+                  <Write
+                    fill={theme.colors.blue}
+                    className={writeHeaderIconStyles()}
+                  />
+                </Button>
+              </ButtonGroupItem>
             </ButtonGroup>
           )}
         </HeaderItem>
       </Header>
-      <ButtonGroup ref={buttonGroupRef}>
+      <ButtonGroup ref={navButtonGroupRef}>
         <ButtonGroupItemFull
           align={{
             "@pc": "center",
           }}
         >
-          <StyledLink to="/" underline={false}>
-            <Button
-              css={{
-                "@pc": {
-                  width: "240px",
-                },
-              }}
-              className={pathname === "/" ? "active" : ""}
-            >
-              🐱 도전자
-            </Button>
-          </StyledLink>
-          <StyledLink to="best-cats" underline={false}>
-            <Button
-              css={{
-                "@pc": {
-                  width: "240px",
-                },
-              }}
-              className={pathname === "/best-cats" ? "active" : ""}
-            >
-              🏆 명예의전당
-            </Button>
-          </StyledLink>
+          <Button
+            css={{
+              "@pc": {
+                width: "240px",
+              },
+            }}
+            as={Link}
+            to="/"
+            active={pathname === "/"}
+          >
+            🐱 도전자
+          </Button>
+          <Button
+            css={{
+              "@pc": {
+                width: "240px",
+              },
+            }}
+            as={Link}
+            to="/best-cats"
+            active={pathname === "/best-cats"}
+          >
+            🏆 명예의전당
+          </Button>
         </ButtonGroupItemFull>
         <ButtonGroupItem>
           <Button
@@ -91,7 +139,7 @@ const Home = () => {
               },
             }}
           >
-            <Write fill="white" className={writeIconStyles()} />
+            <Write fill="white" className={writeButtonIconStyles()} />
             참여하기
           </Button>
         </ButtonGroupItem>
