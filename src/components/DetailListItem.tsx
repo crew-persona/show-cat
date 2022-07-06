@@ -16,6 +16,11 @@ const DetailButtonContainer = styled("div", {
   alignItems: "flex-end",
   background:
     "linear-gradient(360deg, rgba(1, 1, 1, 0.3) 0%, rgba(58, 58, 58, 0) 100%)",
+  "@mobile": {
+    bottom: "0",
+    right: "0",
+    left: "0",
+  },
 });
 
 interface DetailListItemProps {
