@@ -1,16 +1,29 @@
 import { Button } from "components/Button";
 import { ReactComponent as Back } from "@assets/icons/back.svg";
+import { ReactComponent as Write } from "@assets/icons/write.svg";
 import { ListContainer } from "components/CatList";
 import Container from "components/Container";
-import Header, { HeaderItemFull } from "components/Header";
+import Header, { HeaderItem } from "components/Header";
 import DetailListItem from "components/DetailListItem";
 import { Link } from "react-router-dom";
+import { css, theme } from "@styles/stitches.config";
 
 const Detail = () => {
+  const writeIconStyles = css({
+    "@pc": {
+      width: 21,
+      height: 21,
+    },
+    "@mobile": {
+      width: 16,
+      height: 16,
+    },
+  });
+
   return (
     <Container>
       <Header>
-        <HeaderItemFull>
+        <HeaderItem full={true}>
           <Button
             css={{
               dipslay: "flex",
@@ -25,7 +38,12 @@ const Detail = () => {
               🐱 도전자
             </Button>
           </Button>
-        </HeaderItemFull>
+        </HeaderItem>
+        <HeaderItem>
+          <Button as={Link} to="/" iconOnly={true}>
+            <Write fill={theme.colors.blue} className={writeIconStyles()} />
+          </Button>
+        </HeaderItem>
       </Header>
       <ListContainer
         fullWidth={{ "@mobile": true }}

@@ -33,13 +33,16 @@ export const HeaderItem = styled("div", {
   "&:not(:last-child)": {
     marginRight: "8px",
   },
-});
-
-export const HeaderItemFull = styled("div", {
-  flex: "auto",
-  display: "flex",
-  "&:not(:last-child)": {
-    marginRight: "8px",
+  variants: {
+    full: {
+      true: {
+        flex: "auto",
+        display: "flex",
+        "&:not(:last-child)": {
+          marginRight: "8px",
+        },
+      },
+    },
   },
 });
 
