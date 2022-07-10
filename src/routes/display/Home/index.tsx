@@ -124,7 +124,9 @@ const Home = () => {
             }}
             as={Link}
             to="/best-cats"
-            active={pathname === "/best-cats"}
+            active={
+              pathname === "/best-cats" || pathname === "/best-cats/prev-week"
+            }
           >
             🏆 명예의전당
           </Button>
