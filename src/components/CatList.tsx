@@ -40,4 +40,5 @@ export const ListImage = styled("img", {
   width: "100%",
   height: "100%",
   objectFit: "cover",
+  aspectRatio: "1/1",
 });
