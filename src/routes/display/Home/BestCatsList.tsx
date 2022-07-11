@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ListContainer, ListImage, ListItem } from "components/CatList";
+import Text from "components/Text";
 
 interface BestCatsListProps {
   isPrevWeek: boolean;
@@ -12,25 +13,45 @@ interface CatItem {
 
 const BestCatsList = ({ isPrevWeek }: BestCatsListProps) => {
   const [catList, setCatList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      // clear all states
+      setCatList([]);
+      setLoading(true);
       const response = await fetch(
         `https://api.thecatapi.com/v1/images/search?limit=3&order=${
           isPrevWeek ? "desc" : "asc"
         }`
       );
+      // get cat list and set loading status
       const json = await response.json();
       setCatList(json);
+      setLoading(false);
     };
     fetchData();
   }, [isPrevWeek]);
 
+  if (loading) {
+    return <Text as="h2">loading</Text>;
+  }
+
   return (
-    <ListContainer>
+    <ListContainer fullWidth={true}>
       {catList.map((cat: CatItem) => {
         return (
-          <ListItem key={cat.id} count={1}>
+          <ListItem
+            key={cat.id}
+            count={1}
+            css={{
+              "@mobile": {
+                paddingLeft: 0,
+                paddingRight: 0,
+                width: "100%",
+              },
+            }}
+          >
             <ListImage src={cat.url} />
           </ListItem>
         );

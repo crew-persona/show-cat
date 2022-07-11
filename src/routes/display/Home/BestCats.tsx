@@ -3,11 +3,13 @@ import { styled } from "@styles/stitches.config";
 import Text from "components/Text";
 import Heading from "components/Heading";
 import { Button, ButtonGroup, ButtonGroupItem } from "components/Button";
-import { useLocation, Link } from "react-router-dom";
 import BestCatsList from "./BestCatsList";
 
 const BestCatsButton = styled(Button, {
   padding: "7px 20px",
+  "@mobile": {
+    padding: "7px 32px 7px 8px",
+  },
   variants: {
     active: {
       true: {
@@ -31,7 +33,6 @@ const BestCatsButton = styled(Button, {
 
 const BestCats = () => {
   const [isPrevWeek, setIsPrevWeek] = useState(false);
-  const { pathname } = useLocation();
 
   const handleWeekButton = () => {
     setIsPrevWeek(!isPrevWeek);
@@ -40,20 +41,42 @@ const BestCats = () => {
   return (
     <>
       <div className="title" style={{ marginBottom: "32px" }}>
-        <Heading as="h1" css={{ textAlign: "center", marginBottom: "12px" }}>
+        <Heading
+          as="h1"
+          css={{
+            marginBottom: "12px",
+            "@pc": {
+              textAlign: "center",
+            },
+          }}
+        >
           🏆 명예의전당
         </Heading>
-        <Text size="sm" css={{ color: "$black4", textAlign: "center" }}>
+        <Text
+          size="sm"
+          css={{
+            color: "$black4",
+            "@pc": {
+              textAlign: "center",
+            },
+          }}
+        >
           일주일 동안 가장 인기 많았던 고양이 사진들이에요.
         </Text>
       </div>
-      <ButtonGroup css={{ justifyContent: "center" }}>
-        <ButtonGroupItem css={{ margin: "0px 8px" }}>
+      <ButtonGroup
+        css={{
+          "@pc": {
+            justifyContent: "center",
+          },
+        }}
+      >
+        <ButtonGroupItem css={{ marginRight: "8px" }}>
           <BestCatsButton active={!isPrevWeek} onClick={handleWeekButton}>
             이번 주
           </BestCatsButton>
         </ButtonGroupItem>
-        <ButtonGroupItem css={{ margin: "0px 8px" }}>
+        <ButtonGroupItem css={{ marginLeft: "8px" }}>
           <BestCatsButton active={isPrevWeek} onClick={handleWeekButton}>
             지난 주
           </BestCatsButton>
