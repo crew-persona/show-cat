@@ -56,7 +56,6 @@ export const ListOverlay = styled("div", {
         right: "4px",
         left: "4px",
         "@mobile": {
-          top: "0",
           right: "0",
           left: "0",
         },

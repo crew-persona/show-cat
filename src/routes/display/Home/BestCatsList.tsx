@@ -6,6 +6,8 @@ import {
   ListOverlay,
 } from "components/CatList";
 import Text from "components/Text";
+import Medal from "components/Icons/Medal";
+import { css, styled, theme } from "@styles/stitches.config";
 
 interface BestCatsListProps {
   isPrevWeek: boolean;
@@ -16,9 +18,29 @@ interface CatItem {
   url: string;
 }
 
+const MedalGroup = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  marginLeft: "48px",
+  "@mobile": {
+    marginLeft: "32px",
+  },
+});
+
+const MedalCount = styled("p", {
+  color: "$white",
+  fontWeight: 600,
+  position: "relative",
+  top: "8px",
+});
+
 const BestCatsList = ({ isPrevWeek }: BestCatsListProps) => {
   const [catList, setCatList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {
+    colors: { gold, silver, bronze, goldJelly, silverJelly, bronzeJelly },
+  } = theme;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,8 +65,8 @@ const BestCatsList = ({ isPrevWeek }: BestCatsListProps) => {
   }
 
   return (
-    <ListContainer fullWidth={true}>
-      {catList.map((cat: CatItem) => {
+    <ListContainer fullWidth={{ "@mobile": true }}>
+      {catList.map((cat: CatItem, index: number) => {
         return (
           <ListItem
             key={cat.id}
@@ -59,7 +81,36 @@ const BestCatsList = ({ isPrevWeek }: BestCatsListProps) => {
             }}
           >
             <ListOverlay position="top" align="start">
-              foo
+              {index === 0 ? (
+                <MedalGroup>
+                  <Medal medalColor={gold.value} jellyColor={goldJelly.value} />
+                  <MedalCount>1234</MedalCount>
+                </MedalGroup>
+              ) : (
+                ""
+              )}
+              {index === 1 ? (
+                <MedalGroup>
+                  <Medal
+                    medalColor={silver.value}
+                    jellyColor={silverJelly.value}
+                  />
+                  <MedalCount>1234</MedalCount>
+                </MedalGroup>
+              ) : (
+                ""
+              )}
+              {index === 2 ? (
+                <MedalGroup>
+                  <Medal
+                    medalColor={bronze.value}
+                    jellyColor={bronzeJelly.value}
+                  />
+                  <MedalCount>1234</MedalCount>
+                </MedalGroup>
+              ) : (
+                ""
+              )}
             </ListOverlay>
             <ListImage src={cat.url} />
           </ListItem>
