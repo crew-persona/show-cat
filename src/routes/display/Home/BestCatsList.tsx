@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { ListContainer, ListImage, ListItem } from "components/CatList";
+import {
+  ListContainer,
+  ListImage,
+  ListItem,
+  ListOverlay,
+} from "components/CatList";
 import Text from "components/Text";
 
 interface BestCatsListProps {
@@ -45,6 +50,7 @@ const BestCatsList = ({ isPrevWeek }: BestCatsListProps) => {
             key={cat.id}
             count={1}
             css={{
+              position: "relative",
               "@mobile": {
                 paddingLeft: 0,
                 paddingRight: 0,
@@ -52,6 +58,9 @@ const BestCatsList = ({ isPrevWeek }: BestCatsListProps) => {
               },
             }}
           >
+            <ListOverlay position="top" align="start">
+              foo
+            </ListOverlay>
             <ListImage src={cat.url} />
           </ListItem>
         );

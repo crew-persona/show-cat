@@ -1,28 +1,9 @@
 import { useState } from "react";
 import { Button, ButtonGroup, ButtonGroupItem } from "components/Button";
-import { ListImage, ListItem } from "components/CatList";
+import { ListImage, ListItem, ListOverlay } from "components/CatList";
 import { ReactComponent as Jelly } from "@assets/icons/jelly.svg";
 import Text from "components/Text";
-import { css, styled, theme } from "@styles/stitches.config";
-
-const DetailButtonContainer = styled("div", {
-  position: "absolute",
-  height: "25%",
-  bottom: "4px",
-  right: "4px",
-  left: "4px",
-  display: "flex",
-  justifyContent: "flex-end",
-  alignItems: "flex-end",
-  background:
-    "linear-gradient(360deg, rgba(1, 1, 1, 0.3) 0%, rgba(58, 58, 58, 0) 100%)",
-  "@mobile": {
-    height: "40%",
-    bottom: "0",
-    right: "0",
-    left: "0",
-  },
-});
+import { css } from "@styles/stitches.config";
 
 interface DetailListItemProps {
   initialLiked: boolean;
@@ -72,7 +53,7 @@ const DetailListItem = ({
       }}
     >
       <ListImage src={src} alt={alt} />
-      <DetailButtonContainer>
+      <ListOverlay position="bottom" align="end">
         <ButtonGroup
           css={{
             flexDirection: "column",
@@ -116,7 +97,7 @@ const DetailListItem = ({
             </Button>
           </ButtonGroupItem>
         </ButtonGroup>
-      </DetailButtonContainer>
+      </ListOverlay>
     </ListItem>
   );
 };
