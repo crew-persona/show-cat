@@ -28,6 +28,14 @@ export const {
       blue: "#2771FF",
       red: "#FF0000",
       teal: "#00FFF0",
+      // medal colors
+      gold: "#EFFF33",
+      silver: "#CCD6DD",
+      bronze: "#FF8A3B",
+      // medal colors (jelly)
+      goldJelly: "#796600",
+      silverJelly: "#627077",
+      bronzeJelly: "#7C4119",
     },
     fontSizes: {
       small: "14px",

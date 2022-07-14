@@ -40,4 +40,48 @@ export const ListImage = styled("img", {
   width: "100%",
   height: "100%",
   objectFit: "cover",
+  aspectRatio: "1/1",
+});
+
+export const ListOverlay = styled("div", {
+  position: "absolute",
+  height: "30%",
+  display: "flex",
+  variants: {
+    position: {
+      top: {
+        background:
+          "linear-gradient(180deg, rgba(1, 1, 1, 0.3) 0%, rgba(58, 58, 58, 0) 100%)",
+        top: "4px",
+        right: "4px",
+        left: "4px",
+        "@mobile": {
+          right: "0",
+          left: "0",
+        },
+      },
+      bottom: {
+        background:
+          "linear-gradient(360deg, rgba(1, 1, 1, 0.3) 0%, rgba(58, 58, 58, 0) 100%)",
+        bottom: "4px",
+        right: "4px",
+        left: "4px",
+        "@mobile": {
+          bottom: "0",
+          right: "0",
+          left: "0",
+        },
+      },
+    },
+    align: {
+      start: {
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+      },
+      end: {
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+      },
+    },
+  },
 });
