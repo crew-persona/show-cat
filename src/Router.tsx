@@ -14,6 +14,13 @@ import Fab from "components/Fab";
 import { ReactComponent as ArrowUp } from "assets/icons/arrow-up.svg";
 
 const Router = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -40,6 +47,7 @@ const Router = () => {
         color="primary"
         iconOnly={true}
         circle={true}
+        onClick={scrollToTop}
       >
         <ArrowUp />
       </Fab>
