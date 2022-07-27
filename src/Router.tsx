@@ -10,6 +10,8 @@ import BestCats from "routes/display/Home/BestCats";
 import UploadFile from "routes/display/Upload";
 import SignOut from "routes/auth/SignOut";
 import Detail from "routes/display/Detail";
+import Fab from "components/Fab";
+import { ReactComponent as ArrowUp } from "assets/icons/arrow-up.svg";
 
 const Router = () => {
   return (
@@ -33,6 +35,14 @@ const Router = () => {
         {/* Not Found */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Fab
+        floatingPosition="right-bottom"
+        color="primary"
+        iconOnly={true}
+        circle={true}
+      >
+        <ArrowUp />
+      </Fab>
     </BrowserRouter>
   );
 };
