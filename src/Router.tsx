@@ -50,7 +50,7 @@ const Router = () => {
         onClick={scrollToTop}
         css={{
           opacity: scrollPositionY > 0 ? 1 : 0,
-          visibility: scrollPositionY > 0 ? "visible" : "hidden",
+          pointerEvents: scrollPositionY > 0 ? "auto" : "none",
           transition: "opacity 0.3s ease-in-out",
         }}
       >
