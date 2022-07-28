@@ -55,15 +55,11 @@ const Home = () => {
           <HeaderSubtitle>매 주 진행되는 고양이 자랑 대회</HeaderSubtitle>
         </HeaderItem>
         <HeaderItem
-          css={
-            isNavButtonGroupOnScreen
-              ? {}
-              : {
-                  "@mobile": {
-                    flex: "1 1 auto",
-                  },
-                }
-          }
+          css={{
+            "@mobile": {
+              flex: isNavButtonGroupOnScreen ? "" : "1 1 auto",
+            },
+          }}
         >
           {isNavButtonGroupOnScreen ? (
             <Button color="primary">로그인</Button>
@@ -76,16 +72,10 @@ const Home = () => {
                 <Button>🏆 명예의전당</Button>
               </ButtonGroupItem>
               <ButtonGroupItem
-                css={
-                  isNavButtonGroupOnScreen
-                    ? {}
-                    : {
-                        "@mobile": {
-                          flex: "1 1 auto",
-                          justifyContent: "flex-end",
-                        },
-                      }
-                }
+                css={{
+                  flex: isNavButtonGroupOnScreen ? "" : "1 1 auto",
+                  justifyContent: isNavButtonGroupOnScreen ? "" : "flex-end",
+                }}
               >
                 <Button as={Link} to="/" iconOnly={true}>
                   <Write
