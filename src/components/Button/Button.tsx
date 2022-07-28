@@ -30,6 +30,9 @@ const Button = styled("button", {
     iconOnly: {
       true: {
         padding: "12px",
+        svg: {
+          margin: 0,
+        },
       },
     },
     iconAlign: {
