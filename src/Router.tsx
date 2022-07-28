@@ -10,17 +10,8 @@ import BestCats from "routes/display/Home/BestCats";
 import UploadFile from "routes/display/Upload";
 import SignOut from "routes/auth/SignOut";
 import Detail from "routes/display/Detail";
-import Fab from "components/Fab";
-import { ReactComponent as ArrowUp } from "assets/icons/arrow-up.svg";
-import useScrollPosition from "hooks/useScrollPosition";
 
 const Router = () => {
-  const { scrollPositionY } = useScrollPosition();
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  };
-
   return (
     <BrowserRouter>
       <Routes>
@@ -42,20 +33,6 @@ const Router = () => {
         {/* Not Found */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Fab
-        floatingPosition="right-bottom"
-        color="primary"
-        iconOnly={true}
-        circle={true}
-        onClick={scrollToTop}
-        css={{
-          opacity: scrollPositionY > 0 ? 1 : 0,
-          pointerEvents: scrollPositionY > 0 ? "auto" : "none",
-          transition: "opacity 0.3s ease-in-out",
-        }}
-      >
-        <ArrowUp />
-      </Fab>
     </BrowserRouter>
   );
 };
