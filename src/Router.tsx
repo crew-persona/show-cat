@@ -12,13 +12,13 @@ import SignOut from "routes/auth/SignOut";
 import Detail from "routes/display/Detail";
 import Fab from "components/Fab";
 import { ReactComponent as ArrowUp } from "assets/icons/arrow-up.svg";
+import useScrollPosition from "hooks/useScrollPosition";
 
 const Router = () => {
+  const { scrollPositionY } = useScrollPosition();
+
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   return (
@@ -48,6 +48,11 @@ const Router = () => {
         iconOnly={true}
         circle={true}
         onClick={scrollToTop}
+        css={{
+          opacity: scrollPositionY > 0 ? 1 : 0,
+          visibility: scrollPositionY > 0 ? "visible" : "hidden",
+          transition: "opacity 0.3s ease-in-out",
+        }}
       >
         <ArrowUp />
       </Fab>
